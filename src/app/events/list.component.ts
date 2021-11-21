@@ -2,7 +2,7 @@
 import { first } from 'rxjs/operators';
 
 import {AccountService, AlertService, EventService} from '@app/_services';
-import {User} from "../_models";
+import {EStatus, User} from "../_models";
 
 @Component({ templateUrl: 'list.component.html' })
 export class ListComponent implements OnInit {
@@ -36,13 +36,13 @@ export class ListComponent implements OnInit {
       return this.events.findIndex(event => event[param] === value);
     }
     publishEvent(id: string) {
-      this.eventService.update(id, { state: 'publish'})
+      this.eventService.update(id, { state: EStatus.Public})
         .pipe(first())
         .subscribe({
           next: (x: any) => {
             const updatedEventIndex = this.findEventIndex('_id', x.data._id);
             this.events[updatedEventIndex] = x.data;
-            this.alertService.success('Update successful', { keepAfterRouteChange: true });
+            this.alertService.success('Publish successful', { keepAfterRouteChange: true });
           },
           error: error => {
             this.alertService.error(error);

@@ -19,4 +19,8 @@ export class SocketDataService {
     });
     return eventsObservable;
   }
+
+  disconnect() {
+    this.socket.disconnect();
+  }
 }
