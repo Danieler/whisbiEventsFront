@@ -36,12 +36,11 @@ export class AddEditComponent implements OnInit {
                 .pipe(first())
                 .subscribe(x => {
                   let formData = {
-                    startDate: formatDate(new Date(x?.data?.startDate), 'yyyy-MM-dd', 'en'),
+                    startDate: new Date(x?.data?.startDate).toISOString().slice(0, 16),
                     headline: x?.data?.headline,
                     description: x?.data?.description,
                     location: x?.data?.location
                   }
-                  console.log(formData);
                   this.form.patchValue(formData)
                 });
         }

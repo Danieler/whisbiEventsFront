@@ -20,7 +20,7 @@
     <div class="form-row">
         <div class="form-group col">
             <label for="startDate">StarDate</label>
-            <input type="date" formControlName="startDate" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.startDate.errors }" />
+            <input type="datetime-local" formControlName="startDate" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.startDate.errors }" />
             <div *ngIf="submitted && f.startDate.errors" class="invalid-feedback">
                 <div *ngIf="f.startDate.errors.required">StarDate is required</div>
             </div>

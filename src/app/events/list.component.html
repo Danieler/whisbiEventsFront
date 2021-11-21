@@ -1,4 +1,4 @@
-﻿<div class="p-4">
+﻿<div class="p-1">
   <div *ngIf="user" class="container">
     <h1>Hi {{user.username}}!</h1>
     <p>You're logged in whisbi test app</p>
@@ -22,7 +22,7 @@
         <tr *ngFor="let event of events" >
           <td><a routerLink="info/{{event._id}}">{{event.headline}}</a></td>
             <td>{{event.description}}</td>
-            <td>{{event.startDate | date: 'dd/MM/yyyy'}}</td>
+            <td>{{event.startDate | date: 'short'}}</td>
             <td>{{event.state}}</td>
             <ng-container *ngIf="event.state!=='draft' && event.creatorId === user?._id">
               <td style="white-space: nowrap">
