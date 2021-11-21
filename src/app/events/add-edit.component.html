@@ -1,0 +1,45 @@
+﻿<h1 *ngIf="isAddMode">Add Event</h1>
+<h1 *ngIf="!isAddMode">Edit Event</h1>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="form-row">
+        <div class="form-group col">
+            <label for="headline">Headlline</label>
+            <input type="text" formControlName="headline" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.headline.errors }" />
+            <div *ngIf="submitted && f.headline.errors" class="invalid-feedback">
+                <div *ngIf="f.headline.errors.required">Headline is required</div>
+            </div>
+        </div>
+        <div class="form-group col">
+            <label for="description">Description</label>
+            <input type="text" formControlName="description" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.description.errors }" />
+            <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+                <div *ngIf="f.description.errors.required">Description is required</div>
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col">
+            <label for="startDate">StarDate</label>
+            <input type="date" formControlName="startDate" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.startDate.errors }" />
+            <div *ngIf="submitted && f.startDate.errors" class="invalid-feedback">
+                <div *ngIf="f.startDate.errors.required">StarDate is required</div>
+            </div>
+        </div>
+        <div class="form-group col">
+            <label for="location">
+                Location
+            </label>
+            <input type="text" formControlName="location" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.location.errors }" />
+            <div *ngIf="submitted && f.location.errors" class="invalid-feedback">
+                <div *ngIf="f.location.errors.required">Password is required</div>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <button [disabled]="loading" class="btn btn-primary">
+            <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+            Save
+        </button>
+        <a routerLink="/events" class="btn btn-link">Cancel</a>
+    </div>
+</form>

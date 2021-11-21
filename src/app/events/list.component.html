@@ -1,0 +1,49 @@
+﻿<div class="p-4">
+  <div *ngIf="user" class="container">
+    <h1>Hi {{user.username}}!</h1>
+    <p>You're logged in whisbi test app</p>
+  </div>
+</div>
+
+<h1>Events</h1>
+<a *ngIf="user" routerLink="add" class="btn btn-sm btn-success mb-2">Add Event</a>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th style="width: 30%">Headline</th>
+            <th style="width: 30%">Description</th>
+            <th style="width: 30%">StartDate</th>
+            <th style="width: 30%">State</th>
+            <th style="width: 10%"></th>
+        </tr>
+    </thead>
+    <tbody>
+    <ng-container *ngIf="events">
+        <tr *ngFor="let event of events">
+            <td>{{event.headline}}</td>
+            <td>{{event.description}}</td>
+            <td>{{event.startDate | date: 'dd/MM/yyyy'}}</td>
+            <td>{{event.state}}</td>
+            <ng-container *ngIf="event.state!=='draft' && event.creatorId === user._id">
+              <td style="white-space: nowrap">
+                  <a routerLink="edit/{{event._id}}" class="btn btn-sm btn-primary mr-1">Edit</a>
+                  <button (click)="deleteEvent(event._id)" class="btn btn-sm btn-danger btn-delete-event" [disabled]="event.isDeleting">
+                      <span *ngIf="event.isDeleting" class="spinner-border spinner-border-sm"></span>
+                      <span *ngIf="!event.isDeleting">Delete</span>
+                  </button>
+              </td>
+            </ng-container>
+          <ng-container *ngIf="event.state==='draft'">
+            <td style="white-space: nowrap">
+              <button (click)="publishEvent(event._id)" class="btn btn-sm btn-danger">Publish</button>
+            </td>
+          </ng-container>
+        </tr>
+    </ng-container>
+        <tr *ngIf="!events">
+            <td colspan="4" class="text-center">
+                <span class="spinner-border spinner-border-lg align-center"></span>
+            </td>
+        </tr>
+    </tbody>
+</table>
