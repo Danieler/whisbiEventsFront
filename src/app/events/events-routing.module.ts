@@ -6,6 +6,7 @@ import { AuthGuard } from '../_helpers';
 import { LayoutComponent } from './layout.component';
 import { ListComponent } from './list.component';
 import { AddEditComponent } from './add-edit.component';
+import { InfoComponent} from "./info.component";
 
 const routes: Routes = [
     {
@@ -13,7 +14,8 @@ const routes: Routes = [
         children: [
             { path: '', component: ListComponent },
             { path: 'add', component: AddEditComponent, canActivate: [AuthGuard] },
-            { path: 'edit/:id', component: AddEditComponent, canActivate: [AuthGuard] }
+            { path: 'edit/:id', component: AddEditComponent, canActivate: [AuthGuard] },
+            { path: 'info/:id', component: InfoComponent, canActivate: [AuthGuard] }
         ]
     }
 ];

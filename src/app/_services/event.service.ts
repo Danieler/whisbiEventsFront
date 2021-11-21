@@ -30,6 +30,10 @@ export class EventService {
     return this.http.patch(`${environment.apiUrl}/event/${id}`, params);
   }
 
+  suscribe(id, params) {
+    return this.http.put(`${environment.apiUrl}/event/${id}/subscription`, params);
+  }
+
   delete(id: string) {
     return this.http.delete(`${environment.apiUrl}/event/${id}`);
   }

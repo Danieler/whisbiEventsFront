@@ -6,6 +6,7 @@ import { EventsRoutingModule } from './events-routing.module';
 import { LayoutComponent } from './layout.component';
 import { ListComponent } from './list.component';
 import { AddEditComponent } from './add-edit.component';
+import { InfoComponent } from "./info.component";
 
 @NgModule({
     imports: [
@@ -16,7 +17,9 @@ import { AddEditComponent } from './add-edit.component';
     declarations: [
         LayoutComponent,
         ListComponent,
-        AddEditComponent
+        AddEditComponent,
+        InfoComponent
+
     ]
 })
 export class EventsModule { }

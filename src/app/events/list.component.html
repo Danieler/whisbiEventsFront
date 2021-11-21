@@ -19,12 +19,12 @@
     </thead>
     <tbody>
     <ng-container *ngIf="events">
-        <tr *ngFor="let event of events">
-            <td>{{event.headline}}</td>
+        <tr *ngFor="let event of events" >
+          <td><a routerLink="info/{{event._id}}">{{event.headline}}</a></td>
             <td>{{event.description}}</td>
             <td>{{event.startDate | date: 'dd/MM/yyyy'}}</td>
             <td>{{event.state}}</td>
-            <ng-container *ngIf="event.state!=='draft' && event.creatorId === user._id">
+            <ng-container *ngIf="event.state!=='draft' && event.creatorId === user?._id">
               <td style="white-space: nowrap">
                   <a routerLink="edit/{{event._id}}" class="btn btn-sm btn-primary mr-1">Edit</a>
                   <button (click)="deleteEvent(event._id)" class="btn btn-sm btn-danger btn-delete-event" [disabled]="event.isDeleting">
