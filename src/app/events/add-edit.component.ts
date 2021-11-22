@@ -68,7 +68,7 @@ export class AddEditComponent implements OnInit {
         }
     }
 
-    private createEvent() {
+     createEvent() {
         this.eventService.createEvent(this.form.value)
             .pipe(first())
             .subscribe({
@@ -83,7 +83,7 @@ export class AddEditComponent implements OnInit {
             });
     }
 
-    private updateEvent() {
+     updateEvent() {
         this.eventService.update(this.id, this.form.value)
             .pipe(first())
             .subscribe({
